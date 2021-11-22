@@ -1,0 +1,59 @@
+{% extends 'layout.html'%} {% block body%}
+
+<div class="container-fluid h-100">
+  <div class="row h-75 mt-5">
+    <div class="col-md-4 offset-md-4 shadow rounded-3" id="login-body">
+      <div class="container">
+        <div class="row text-center mt-5">
+          <div class="col-12">
+            <i
+              class="
+                fas
+                fa-user-alt fa-3x
+                bg-primary
+                text-white
+                rounded-circle
+                fa-border
+                border-primary
+                p-3
+              "
+            ></i>
+          </div>
+          <h3 class="mt-3 fs-4 fw-lighter col-12">Sign In</h3>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-10 offset-1">
+            <form action="{% url 'login' %}" method="POST">
+              {% csrf_token %} {{form.userName}} {{form.password}}
+
+              <input
+                type="submit"
+                class="btn btn-primary form-control p-3"
+                value="Login"
+              />
+
+              <div class="row mt-3">
+                <div class="col-6 text-primary">
+                  <input
+                    type="checkbox"
+                    name="Remeber_me"
+                    id="Remeber_me"
+                    class="mr-2"
+                    checked
+                  />
+                  <span> Remember Me</span>
+                </div>
+                <div class="col-6 text-primary text-end">
+                  <a href="#" id="fp-link">Forgot Passwords ?</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body%}

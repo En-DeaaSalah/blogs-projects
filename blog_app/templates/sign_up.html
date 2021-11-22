@@ -1,0 +1,83 @@
+{% extends 'layout.html'%} {% block body%}
+
+<div class="container w-50 mb-0">
+  <div class="row">
+    {% if messages %}
+
+    <div
+      class="col-12 alert alert-warning alert-dismissible fade show"
+      role="alert"
+    >
+      {% for message in messages%}
+      <p>{{message}}</p>
+
+      {% endfor%}
+
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+
+    {% endif %}
+  </div>
+</div>
+
+<div class="container w-50 h-75 mt-5 bg-body rounded-3 shadow-lg">
+  <div class="row h-100">
+    <div class="col-md-6">
+      <div class="container w-75 h-100">
+        <div class="row">
+          <div class="col-12 mt-5 h-100">
+            <h1 class="mb-5">Sign up</h1>
+            <form action="{% url 'sing_up'%}" method="POST">
+              {% csrf_token %}
+              <div class="input-group mb-4 border-b">
+                <label for="userNameInput" class="form-label me-2 pt-2"
+                  ><i class="fas fa-user"></i
+                ></label>
+
+                {{form.userName}}
+              </div>
+
+              <div class="input-group mb-4 border-b">
+                <label for="emailInput" class="form-label me-2 pt-2"
+                  ><i class="fas fa-envelope"></i
+                ></label>
+                {{form.email}}
+              </div>
+
+              <div class="input-group mb-4 border-b">
+                <label for="password" class="form-label me-2 pt-2"
+                  ><i class="fas fa-lock"></i
+                ></label>
+                {{form.password}}
+              </div>
+
+              <div class="input-group mb-lg-5 border-b">
+                <label for="re-password" class="form-label me-2 pt-2"
+                  ><i class="fas fa-lock"></i
+                ></label>
+                {{form.re_password}}
+              </div>
+              <input type="submit" class="btn btn-primary" value="Register" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="d-flex justify-content-center align-items-center mt-5">
+        <img src="../static/img/signup-image.jpg" alt="signup-image" />
+      </div>
+      <div class="mt-5 text-center">
+        <a class="text-black" href="{% url 'login' %}">I am already member</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock%}
