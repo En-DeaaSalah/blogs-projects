@@ -7,8 +7,17 @@ from django.contrib.auth import login, logout, authenticate
 
 def index(request):
     user = request.user
+
+    print(user.email)
+
     if user.is_authenticated:
-        return render(request, 'index.html', {})
+        return render(request, 'index.html', {
+
+            'username': user.username
+
+
+
+        })
     else:
         return redirect('login')
 

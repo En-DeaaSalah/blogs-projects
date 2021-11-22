@@ -2,6 +2,7 @@ body,
 html {
   height: 100%;
   background-color: #f8f9fd;
+  background-color: hsl(0deg 0% 98%);
 }
 #login-body {
   background-color: #fff !important;
@@ -22,4 +23,22 @@ html {
 }
 .no-border:focus::placeholder {
   color: black;
+}
+
+.def-cursor {
+  cursor: default !important;
+}
+
+.outline-none:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+#search_field:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.b-hover:hover {
+  background-color: blue !important;
+  color: white;
 }

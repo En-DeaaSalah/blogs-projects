@@ -1,0 +1,125 @@
+{% load static%}
+<nav class="container-fluid pb-0 bg-white">
+  <div class="row navbar pb-0">
+    <div class="col-3 col-md-3">
+      <div class="navbar-brand">
+        <button
+          class="btn btn-lg outline-none"
+          data-bs-toggle="offcanvas"
+          href="#offcanvasExample"
+        >
+          <i class="fas fa-list-ul"></i>
+        </button>
+
+        <img
+          width="50"
+          src="{% static 'img/brand_logo.jpg' %}"
+          alt="bran"
+          class="rounded-circle"
+        />
+        <span class="fw-bold">Wolf</span>
+      </div>
+    </div>
+
+    <div class="col-9 col-md-9" dir="rtl">
+      <div class="row">
+        <div class="col-md-4 col-6">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-3">
+                <a
+                  href="{% url 'logout'%}"
+                  class="btn btn-sm outline-none rounded-circle"
+                  ><i class="fas fa-sign-out-alt fa-2x"></i>
+                </a>
+              </div>
+
+              <div class="col-3 dropdown">
+                <button
+                  class="btn btn-sm rounded-circle outline-none dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-user fa-2x"></i>
+                </button>
+                <ul
+                  class="dropdown-menu rounded-3 fs-6"
+                  aria-labelledby="dropdownMenuButton1"
+                >
+                  <div class="border-b border-1 border-secondary mb-3 pb-2">
+                    <p class="ps-2 py-0 m-0">Signd in as</p>
+                    <p class="lead ps-2 m-0 fs-6">{{user.email}}</p>
+                  </div>
+                  <a
+                    class="
+                      dropdown-item
+                      lead
+                      fs-6
+                      text-center
+                      b-hover
+                      def-cursor
+                    "
+                  >
+                    Add blog
+                  </a>
+                  <a
+                    class="
+                      dropdown-item
+                      lead
+                      fs-6
+                      text-center
+                      b-hover
+                      def-cursor
+                    "
+                  >
+                    Delete blog
+                  </a>
+                  <a
+                    class="
+                      dropdown-item
+                      lead
+                      fs-6
+                      text-center
+                      b-hover
+                      def-cursor
+                    "
+                  >
+                    Edit blog
+                  </a>
+                  <a
+                    class="
+                      dropdown-item
+                      lead
+                      fs-6
+                      text-center
+                      b-hover
+                      def-cursor
+                    "
+                  >
+                    Setting
+                  </a>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-6">
+          <form action="" class="d-flex" dir="ltr">
+            <input
+              id="search_field"
+              class="form-control rounded-0"
+              type="text"
+              placeholder="Search"
+            />
+            <button class="btn btn-secondary rounded-0 outline-none">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

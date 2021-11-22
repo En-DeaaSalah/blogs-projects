@@ -1,5 +1,12 @@
-{% extends 'layout.html'%} {% block body%}
+{% extends 'layout.html'%}
 
+<!-- 
+
+
+
+  
+ -->
+{% block title%} Login {% endblock title%} {% block body %}
 <div class="container-fluid h-100">
   <div class="row h-75 mt-5">
     <div class="col-md-4 offset-md-4 shadow rounded-3" id="login-body">
@@ -45,7 +52,8 @@
                   <span> Remember Me</span>
                 </div>
                 <div class="col-6 text-primary text-end">
-                  <a href="#" id="fp-link">Forgot Passwords ?</a>
+                  <!-- <a href="#" id="fp-link">Forgot Passwords ?</a> -->
+                  <a href="{% url 'sing_up'%}" id="fp-link">Create Account ?</a>
                 </div>
               </div>
             </form>
@@ -56,4 +64,4 @@
   </div>
 </div>
 
-{% endblock body%}
+{% endblock body %}

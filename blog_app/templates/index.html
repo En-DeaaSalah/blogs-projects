@@ -1,1 +1,21 @@
-{% extends 'layout.html'%} {% block body%} {% endblock body%}
+{% extends 'layout.html'%} {% block body%}
+
+<header>{% include 'nav.html'%}</header>
+<div
+  class="offcanvas offcanvas-start w-25"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header">
+    <button
+      type="button"
+      class="btn-close text-reset outline-none"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body"></div>
+</div>
+
+{% endblock body%}
