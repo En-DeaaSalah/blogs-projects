@@ -1,0 +1,49 @@
+{% load static %}
+<div
+  class="offcanvas offcanvas-start offcanvas-width"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header">
+    <div class="container-fluid border-b">
+      <div class="row">
+        <button
+          type="button"
+          class="btn-close btn-sm text-reset outline-none col-2 p-0 m-0"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+        <span class="col-2 mt-2">Wolf</span>
+        <img
+          class="col-4 rounded-circle"
+          width=""
+          src="{% static 'img/brand_logo.jpg' %}"
+          alt="brand-logo"
+        />
+        <span class="col-2 mt-2 ps-0">Blogger</span>
+      </div>
+    </div>
+  </div>
+  <div class="offcanvas-body">
+    <div class="container-fluid">
+      <div class="row m-0">
+        <ul class="col-md-12">
+          <a class="d-block mb-3 b-hover p-2 side-link" href="{% url 'index'%}">
+            <i class="fas fa-home me-2"></i> Home
+          </a>
+          <a class="d-block mb-3 b-hover p-2 side-link">
+            <i class="fas fa-bookmark me-2"></i>Library
+          </a>
+          <a class="d-block mb-3 b-hover p-2 side-link">
+            <i class="fas fa-info-circle me-2"></i>help
+          </a>
+
+          <a class="d-block mb-3 b-hover p-2 side-link">
+            <i class="fas fa-comment-alt me-2"></i>Send FeedBack
+          </a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

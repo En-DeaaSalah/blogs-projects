@@ -1,0 +1,56 @@
+{% extends 'layout.html'%} {% block body%} {% include 'offcanvas.html' %}
+
+<div class="container-fluid h-75">
+  <div class="row fixed-top">
+    <header>{% include 'nav.html'%}</header>
+  </div>
+
+  <form class="row margin-top h-100" action="{% url 'add_blog'%}" method="POST">
+    <div class="col-md-10">
+      <p class="display-6">Add New Blog</p>
+
+      {% csrf_token %}
+
+      <input
+        name="title"
+        type="text"
+        class="form-control my-3"
+        maxlength="100"
+        placeholder="Enter Blog Title Here"
+      />
+      <p class="mt-1">Content</p>
+      <textarea name="content" id="editor" class="h-75"></textarea>
+    </div>
+
+    <div class="col-md-2 bg-white">
+      <div class="container-fliud">
+        <div class="row m-0">
+          <div class="col-md-12 m-0">
+            <p class="border-b my-3 pb-2">Blog Details</p>
+            <select
+              class="form-select form-select-sm mb-3"
+              aria-label=".form-select-sm example"
+            >
+              <option selected>category</option>
+              <option value="1">Math</option>
+              <option value="2">Technology</option>
+              <option value="3">History</option>
+            </select>
+            <select
+              class="form-select form-select-sm mb-3"
+              aria-label=".form-select-sm example"
+            >
+              <option selected>visibility</option>
+              <option value="1">public</option>
+              <option value="2">privite</option>
+              <option value="3">some people</option>
+            </select>
+          </div>
+          <input class="btn btn-primary" type="submit" value="Publish" />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+{%endblock%}

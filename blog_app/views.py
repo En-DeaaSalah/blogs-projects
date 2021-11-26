@@ -3,23 +3,46 @@ from django.shortcuts import redirect, render
 from .forms import LoginForm, SingUpForm
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import login, logout, authenticate
+from .models import *
 
 
 def index(request):
     user = request.user
-
-    print(user.email)
-
     if user.is_authenticated:
+
+        blogs = Blog.objects.all()
+
         return render(request, 'index.html', {
 
-            'username': user.username
-
-
+            'username': user.username,
+            'blogs': blogs
 
         })
     else:
         return redirect('login')
+
+
+def add_blog(request):
+
+    if request.method == 'POST':
+        print(request.POST['title'])
+        print(request.POST['content'])
+
+    blog = Blog()
+
+    return render(request, 'add_blog.html')
+
+
+def edit_blog(request):
+    pass
+
+
+def delete_blog(request):
+    pass
+
+
+def setting(request):
+    return render(request, 'setting.html')
 
 
 def logOut(request):

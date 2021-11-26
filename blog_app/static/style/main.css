@@ -1,8 +1,7 @@
 body,
 html {
   height: 100%;
-  background-color: #f8f9fd;
-  background-color: hsl(0deg 0% 98%);
+  background-color: #c2c5aa;
 }
 #login-body {
   background-color: #fff !important;
@@ -41,4 +40,44 @@ html {
 .b-hover:hover {
   background-color: blue !important;
   color: white;
+}
+.info-div {
+  position: relative;
+  /* margin-top: -100px; */
+  z-index: 10;
+  height: 100%;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.side-link {
+  text-decoration: none !important;
+  color: black;
+}
+
+.margin-top {
+  margin-top: 100px !important ;
+}
+.offcanvas-width {
+  width: 250px !important;
+}
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  background-color: #e9ecef !important;
+}
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.placeholder-fixed::placeholder {
+  float: right !important;
 }
