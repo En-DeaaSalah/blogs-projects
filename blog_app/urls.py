@@ -12,6 +12,9 @@ urlpatterns = [
     path('delete-blog/', delete_blog, name='delete_blog'),
     path('edit-blog/', edit_blog, name='edit_blog'),
     path('setting/', setting, name='setting'),
+    path('delete/<int:id>/', delete_blog_admin, name='delete'),
+    path('choos_edit_blog/', choos_edit, name='choos_edit_blog'),
+    path('edit/<int:id>/', edit_blog, name='edit'),
 
 
 ]

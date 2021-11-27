@@ -18,12 +18,27 @@
         <div class="row">
           <div class="col-md-6 p-3">
             <div>
+              {% if img %}
               <img
+                src="../static/img/{{img}}"
+                alt="profile picture"
+                width="100"
+                class="border-2 ms-5 mt-3 mb-2"
+              />
+              {% else %}
+              <img
+                src="../static/img/blank-profile-picture.png"
+                alt="profile picture"
+                width="100"
+                class="border-2 ms-5 mt-3 mb-2"
+              />
+              {% endif%}
+              <!-- <img
                 width="100"
                 src="{% static 'img/signup-image.jpg'%}"
                 alt="user-img"
                 class="rounded-circle border-2 border-danger ms-5 mt-3"
-              />
+              /> -->
             </div>
             <p class="lead fs-6 p-0 m-0">
               <i class="fas fa-user-edit"></i> publisher Name :
@@ -38,7 +53,7 @@
             <div>
               <p class="lead fs-6 p-0 m-0">
                 <i class="fas fa-window-maximize"></i> catigory :
-                <span class="fw-bold"> Math </span>
+                <span class="fw-bold"> {{blog.category}} </span>
               </p>
 
               <p class="lead fs-6 p-0 m-0">
@@ -87,5 +102,17 @@
     <div class="col-md-2"></div>
   </div>
 </div>
+{% endblock body%} {% block js%}
 
-{% endblock body%}
+<script>
+  element = document.querySelectorAll(".info-div");
+
+  console.log(element.length);
+  for (let i = 0; i < element.length; i++) {
+    val = element[i].textContent;
+    element[i].innerHTML = val;
+    console.log(val);
+  }
+</script>
+
+{% endblock js%}

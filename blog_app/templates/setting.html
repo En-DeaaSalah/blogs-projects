@@ -7,30 +7,44 @@
 
   <div class="row">
     <div class="col-md-12 my-3">
-      <p class="display-6 fs-5">Your Profile</p>
+      <p class="display-6 fs-5 ms-5"><span class="ms-5">Your Profile</span></p>
     </div>
   </div>
-  <form class="row">
+  <form
+    class="row"
+    action="{% url 'setting'%}"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token%}
     <div class="col-md-4">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
+            {% if img %}
+            <img
+              src="../static/img/{{img}}"
+              alt="profile picture"
+              width="270"
+            />
+            {% else %}
             <img
               src="../static/img/blank-profile-picture.png"
               alt="profile picture"
               width="270"
             />
+            {% endif%}
           </div>
         </div>
         <div class="row">
           <div class="col-md-9">
             <div class="fileUpload btn w-100 ms-0">
               <span>Upload <i class="fas fa-camera float-end pt-1"></i></span>
-              <input type="file" class="upload" name="image" />
+              <input type="file" class="upload" name="img" />
             </div>
             <div>
               <p class="fs-6 lead">
-                Registration date <span class="float-end">2020/20/20</span>
+                Registration date <span class="float-end">11/27/2021</span>
               </p>
             </div>
           </div>
@@ -47,41 +61,53 @@
           type="text"
           class="form-control mb-3 outline-none placeholder-fixed"
           placeholder="Name"
+          value="{{request.user.username}}"
+          name="name"
         />
         <input
-          type="text"
+          type="date"
           class="form-control outline-none placeholder-fixed"
           placeholder="Birth date"
+          name="date"
+          value="{{date}}"
         />
       </div>
       <div class="mb-3">
         <p class="lead fs-6">contact Informations</p>
         <input
-          type="text"
+          type="email"
           class="form-control mb-3 outline-none placeholder-fixed"
           placeholder="E-mail"
+          value="{{request.user.email}}"
+          name="email"
         />
         <input
           type="tel"
           class="form-control outline-none placeholder-fixed"
           placeholder="Phone Number"
+          name="tel"
+          value="{{tel}}"
         />
       </div>
       <div class="mb-3">
         <p class="lead fs-6">password Managment</p>
         <input
-          type="text"
+          type="password"
           class="form-control mb-3 outline-none placeholder-fixed"
           placeholder="old password"
+          name="old_pas"
         />
         <input
-          type="text"
+          type="password"
           class="form-control outline-none placeholder-fixed"
-          placeholder="new password "
+          placeholder="new password"
+          name="new_pas"
         />
       </div>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-4 d-flex align-items-end justify-content-md-center">
+      <input class="btn btn-primary w-25 mb-5" type="submit" value="save" />
+    </div>
   </form>
 </div>
 

@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 
 
 class LoginForm(forms.Form):
-    userName = forms.CharField(max_length=40, widget=forms.TextInput(attrs={'class': 'form-control mb-4 p-2',
+    userName = forms.CharField(max_length=40, widget=forms.TextInput(attrs={'class': 'form-control mb-4 p-2 outline-none',
                                                                             'placeholder': 'Username'}))
     password = forms.CharField(max_length=40, widget=forms.PasswordInput(
-        attrs={'class': 'form-control p-2 mb-4', 'placeholder': 'Password'}))
+        attrs={'class': 'form-control p-2 mb-4 outline-none', 'placeholder': 'Password'}))
 
 
 class SingUpForm(forms.Form):
@@ -40,5 +40,54 @@ class SingUpForm(forms.Form):
         'class': 'form-control no-border shadow-none',
         'placeholder': 'Your Email',
         'id': 'emailInput',
+
+    }))
+
+
+class ProfileForm(forms.Form):
+
+    userName = forms.CharField(max_length=40, widget=forms.TextInput(attrs={
+
+        'class': 'form-control mb-3 outline-none placeholder-fixed',
+        'placeholder': 'Name',
+
+
+    }))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+
+        'class': 'form-control outline-none placeholder-fixed',
+        'placeholder': 'E-mail',
+
+
+    }))
+
+    old_password = forms.CharField(max_length=40, widget=forms.PasswordInput(attrs={
+
+        'class': 'form-control outline-none placeholder-fixed',
+        'placeholder': 'old password',
+
+
+    }))
+    new_password = forms.CharField(max_length=40, widget=forms.PasswordInput(attrs={
+
+        'class': 'form-control outline-none placeholder-fixed',
+        'placeholder': 'new password',
+
+
+    }))
+
+    birth_date = forms.DateField(widget=forms.TextInput(attrs={
+
+        'class': 'form-control mb-3 outline-none placeholder-fixed',
+        'placeholder': 'Birth date',
+
+
+    }))
+
+    phone_number = forms.CharField(max_length=20, widget=forms.TextInput(attrs={
+
+        'class': 'form-control mb-3 outline-none placeholder-fixed',
+        'placeholder': 'Phone Number',
+
 
     }))

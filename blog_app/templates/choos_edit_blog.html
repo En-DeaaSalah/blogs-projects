@@ -1,0 +1,72 @@
+{% extends 'layout.html'%} {% load static%} {% block body%}
+
+<!-- dasd -->
+{% include 'offcanvas.html' %}
+
+<div class="container-fluid margin-top">
+  <div class="row fixed-top">
+    <header>{% include 'nav.html'%}</header>
+  </div>
+
+  {% if message%}
+  <div class="row">
+    <div class="col-md-12 text-center margin-top">
+      <p class="display-5 margin-top">Yout Blog List is empty</p>
+    </div>
+  </div>
+  {% endif%}
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        {% for blog in blogs %}
+
+        <div class="accordion-item mb-5">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button
+              class="accordion-button collapsed outline-none"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseThree"
+              aria-expanded="false"
+              aria-controls="flush-collapseThree"
+            >
+              {{blog.title}}
+            </button>
+          </h2>
+          <div
+            id="flush-collapseThree"
+            class="accordion-collapse collapse"
+            aria-labelledby="flush-headingThree"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">{{blog.content}}</div>
+            <div class="d-flex justify-content-md-end">
+          
+              <a href="{% url 'edit' blog.id%}" class="btn btn-danger m-2"
+                >Edit<i class="fas fa-edit m-2"></i></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {% endfor%}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body%} {% block js%}
+
+<script>
+  element = document.querySelectorAll(".accordion-body");
+
+  console.log(element.length);
+  for (let i = 0; i < element.length; i++) {
+    val = element[i].textContent;
+    element[i].innerHTML = val;
+    console.log(val);
+  }
+
+</script>
+
+{% endblock js%}

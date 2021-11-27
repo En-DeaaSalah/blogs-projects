@@ -7,7 +7,7 @@
 
   <form class="row margin-top h-100" action="{% url 'add_blog'%}" method="POST">
     <div class="col-md-10">
-      <p class="display-6">Add New Blog</p>
+      <p class="display-6">Edit Blog</p>
 
       {% csrf_token %}
 
@@ -17,9 +17,12 @@
         class="form-control my-3 outline-none"
         maxlength="100"
         placeholder="Enter Blog Title Here"
+        value="{{blog.title}}"
       />
       <p class="mt-1">Content</p>
-      <textarea name="content" id="editor" class="h-75"></textarea>
+      <textarea name="content" id="editor" class="h-75">
+{{blog.content}}</textarea
+      >
     </div>
 
     <div class="col-md-2 bg-white">
