@@ -111,14 +111,14 @@ def delete_blog(request):
 
 def setting(request):
 
+    R_year = validate_date(str(request.user.date_joined.year))
+    R_month = validate_date(str(request.user.date_joined.month))
+    R_day = validate_date(str(request.user.date_joined.day))
+
+    register_date = R_month+'/'+R_day+'/'+R_year
+    print(register_date)
+
     if request.method == "POST":
-        print(request.POST['name'])
-        print(request.POST['email'])
-        print(request.POST['tel'])
-        print(request.POST['old_pas'])
-        print(request.POST['new_pas'])
-        print(request.POST.get('img'))
-        print(request.POST['date'])
 
         name = request.POST['name']
         email = request.POST['email']
@@ -127,13 +127,16 @@ def setting(request):
         new_pas = request.POST['new_pas']
         img = request.POST.get('img')
         date = request.POST['date']
+
         user = User.objects.get(username=name)
         profile = Profile.objects.get(owner=user.id)
         user.username = name
         user.email = email
+        if not date == '':
+            profile.birth_date = date
+
         # user.password = new_pas
 
-        profile.birth_date = date
         # profile.img = img
         profile.phone_number = tel
         profile.save()
@@ -160,14 +163,28 @@ def setting(request):
         if profile.img == 'blank-profile-picture.png':
             image = None
 
+        B_year = validate_date(str(profile.birth_date.year))
+        B_month = validate_date(str(profile.birth_date.month))
+        B_day = validate_date(str(profile.birth_date.day))
+
+        birth_date = B_year+'-'+B_month+'-'+B_day
+
         return render(request, 'setting.html', {
 
             'name': request.user.username,
             'email': request.user.email,
             'tel': profile.phone_number,
-            'date': profile.birth_date,
+            'birth_date': birth_date,
+            'register_date': register_date,
             'img': image,
         })
+
+
+def validate_date(arg):
+    if len(arg) >= 2:
+        return arg
+    else:
+        return '0'+arg
 
 
 def logOut(request):
@@ -234,21 +251,6 @@ def sing_up(request):
             profile.save()
 
             return redirect('login')
-
-            # User.objects.get(username=userName)
-
-            # user = authenticate(username=userName, password=Userpassword)
-            # print(user)
-
-            # if user is None:
-            #     messages.error(request, "this user alrady exist")
-
-            #     return redirect('sing_up')
-            # else:
-            #     userAccount = User.objects.create_user(
-            #         userName, email, Userpassword)
-            #     userAccount.save()
-            #     return redirect('login')
 
         else:
             return redirect('sing_up')

@@ -44,7 +44,8 @@
             </div>
             <div>
               <p class="fs-6 lead">
-                Registration date <span class="float-end">11/27/2021</span>
+                Registration date
+                <span class="float-end">{{register_date}}</span>
               </p>
             </div>
           </div>
@@ -55,52 +56,55 @@
     <div class="col-md-4">
       <div class="mb-3">
         <p class="lead fs-6">Personal Informations</p>
-
+        <span class="text-muted lead fs-6 float-end">Name</span>
         <input
           data-placeholder="Name"
           type="text"
-          class="form-control mb-3 outline-none placeholder-fixed"
-          placeholder="Name"
+          class="form-control mb-3 outline-none"
           value="{{request.user.username}}"
           name="name"
         />
+
+        <span class="text-muted lead fs-6 float-end">Birth date</span>
         <input
           type="date"
-          class="form-control outline-none placeholder-fixed"
-          placeholder="Birth date"
+          class="form-control outline-none"
           name="date"
-          value="{{date}}"
+          id="Birth_date"
+          value="{{birth_date}}"
         />
       </div>
       <div class="mb-3">
         <p class="lead fs-6">contact Informations</p>
+        <span class="text-muted lead fs-6 float-end">E-mail</span>
         <input
           type="email"
-          class="form-control mb-3 outline-none placeholder-fixed"
-          placeholder="E-mail"
+          class="form-control mb-3 outline-none"
           value="{{request.user.email}}"
           name="email"
         />
+
+        <span class="text-muted lead fs-6 float-end">Phone Number</span>
         <input
           type="tel"
-          class="form-control outline-none placeholder-fixed"
-          placeholder="Phone Number"
+          class="form-control outline-none"
           name="tel"
           value="{{tel}}"
         />
       </div>
-      <div class="mb-3">
+
+      <div class="mb-2">
         <p class="lead fs-6">password Managment</p>
+        <span class="text-muted lead fs-6 float-end">old password</span>
         <input
           type="password"
-          class="form-control mb-3 outline-none placeholder-fixed"
-          placeholder="old password"
+          class="form-control mb-3 outline-none"
           name="old_pas"
         />
+        <span class="text-muted lead fs-6 float-end">new password</span>
         <input
           type="password"
-          class="form-control outline-none placeholder-fixed"
-          placeholder="new password"
+          class="form-control outline-none"
           name="new_pas"
         />
       </div>
@@ -111,4 +115,10 @@
   </form>
 </div>
 
-{%endblock%}
+{%endblock%} {%block js%}
+<script>
+  element = document.querySelector("#Birth_date");
+  console.log(element.value);
+</script>
+
+{% endblock%}
