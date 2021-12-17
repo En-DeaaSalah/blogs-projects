@@ -150,7 +150,8 @@ def setting(request):
             'name': name,
             'email': email,
             'tel': tel,
-            'date': date,
+            'birth_date': date,
+            'register_date': register_date,
             'img': image,
         })
 
@@ -163,9 +164,16 @@ def setting(request):
         if profile.img == 'blank-profile-picture.png':
             image = None
 
-        B_year = validate_date(str(profile.birth_date.year))
-        B_month = validate_date(str(profile.birth_date.month))
-        B_day = validate_date(str(profile.birth_date.day))
+        if profile.birth_date is not None:
+
+            B_year = validate_date(str(profile.birth_date.year))
+            B_month = validate_date(str(profile.birth_date.month))
+            B_day = validate_date(str(profile.birth_date.day))
+        else:
+
+            B_year = 'YYYY'
+            B_month = 'MM'
+            B_day = 'DD'
 
         birth_date = B_year+'-'+B_month+'-'+B_day
 
